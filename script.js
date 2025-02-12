@@ -35,7 +35,9 @@ bttnAdd.addEventListener('click', () => {
         <td>${nome}</td>
         <td>${email}</td>
         <td>${tel}</td>
-        <td><input type="checkbox" class="select-remove"></input></td>
+        <td>
+        <button class="btn btn-danger">Remover</button>
+        </td>
     `
 })
     
