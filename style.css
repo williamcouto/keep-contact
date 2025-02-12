@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+}
+.form-control {
+    width: 260px;
+    height: 37px;
+}
+.btn{
+    width: 15%;
+    height: 42px;
+    border: none;
+    border: 1px solid #0000003f;
+}
+th, table, tbody, tr{
+    border: 1px solid #0000003f;
+}
