@@ -6,16 +6,17 @@
 form{
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 10px;
     align-items: center;
 }
 .form-control {
-    width: 260px;
+    width: 250px;
     height: 37px;
 }
 .btn{
-    width: 15%;
-    height: 42px;
+    width: 230px;
+    height: 45px;
+    padding: 8px;
     border: none;
     border: 1px solid #0000003f;
 }
@@ -25,5 +26,6 @@ form{
     padding: 3px;
 }
 th, table, tbody, tr{
-    border: 1px solid #0000003f;
+    border: 1px solid #00000044;
 }
+
