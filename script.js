@@ -1,6 +1,6 @@
 let bttnAdd = document.querySelector('.btn')
-let bttnRemove = document.querySelector('.btn-danger')
 let form = document.getElementById('formContact')
+let idCount = 1
 
 form.addEventListener('submit', (Event) => {
     Event.preventDefault()
@@ -11,8 +11,7 @@ bttnAdd.addEventListener('click', () => {
     let nome = document.getElementById('contactName').value
     let email = document.getElementById('emailContact').value
     let tel = document.getElementById('telContact').value
-    let idCount = 1
-    let tbAdd = document.getElementById('tb-contact')
+    const tbAdd = document.getElementById('tb-contact')
 
     //Cria uma linha e celula
     let newRow = document.createElement('tr')
@@ -24,11 +23,7 @@ bttnAdd.addEventListener('click', () => {
     td_Name.appendChild(textElem)
     tbAdd.appendChild(newRow)
     
-
-    // Apagando valores do input
-    document.getElementById('contactName').value = ''
-    document.getElementById('emailContact').value = ''
-    document.getElementById('telContact').value = ''
+    limparCampos()
 
     newRow.innerHTML = `    
         <td>${idCount++}</td>
@@ -37,7 +32,17 @@ bttnAdd.addEventListener('click', () => {
         <td>${tel}</td>
         <td>
         <button class="btn btn-danger">Remover</button>
-        </td>
-    `
+        </td>` 
+
+    newRow.querySelector('.btn-danger').addEventListener('click', (Event) => {
+        const rowRemoved = Event.target.closest('tr')
+        rowRemoved.remove()
+    })
+
+    // Apagando valores do input
+    function limparCampos(){
+    document.getElementById('contactName').value = ''
+    document.getElementById('emailContact').value = ''
+    document.getElementById('telContact').value = ''
+    }  
 })
-    
