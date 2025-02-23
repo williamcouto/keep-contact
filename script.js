@@ -1,14 +1,3 @@
-
-//     newRow.innerHTML = `    
-//         <td>${idCount++}</td>
-//         <td>${nome}</td>
-//         <td>${email}</td>
-//         <td>${tel}</td>
-//         <td>
-//         <button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button>
-//         </td>` 
-// })
-
 let bttnAdd = document.querySelector('.btn')
 let form = document.getElementById('formContact')
 let idCount = 1
@@ -22,12 +11,8 @@ function contactHandler(bttnAdd, form){
         let tel = document.getElementById('telContact').value
 
         addContact(nome, email, tel)
-    })
-
-    
+    })    
 }
-
-//Criar função Adicionar Contato
 function addContact(nome, email, tel){
     createRow(nome, email, tel)
     limparCampos()
@@ -64,10 +49,19 @@ function createRow(nome, email, tel){
 
     limparCampos()
 
-        // newRow.querySelector('.btn-danger').addEventListener('click', (Event) => {
-        //     const rowRemoved = Event.target.closest('tr')
-        //     rowRemoved.remove()
-        // })
+    // Criando botão de exclusão
+    let tdRemove = document.createElement('td')
+    let btnRemove = document.createElement('button')
+    btnRemove.classList.add('btn', 'btn-danger')
+    btnRemove.innerHTML = '<i class="bi bi-trash3-fill"></i>'
+    newRow.appendChild(tdRemove)
+    tdRemove.appendChild(btnRemove)
+
+
+    btnRemove.addEventListener('click', (Event) => {
+            const rowRemoved = Event.target.closest('tr')
+            rowRemoved.remove()
+        })
 }
 
 //Limpando valores
