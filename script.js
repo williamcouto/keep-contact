@@ -21,7 +21,7 @@ function contactHandler(bttnAdd, form){
 }
 // Validando campos
 function validateInput(tel, email){
-    const regexTel = /^\([1-9]{2}\)\s9[0-9][0-9]{4}\-[0-9]{4}$/
+    const regexTel = /^\([1-9]{2}\)\s9[0-9]{4}\-[0-9]{4}$/
     return regexTel.test(tel)
 }
 
