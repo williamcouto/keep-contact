@@ -4,19 +4,30 @@ let idCount = 1
 
 function contactHandler(bttnAdd, form){
     form.addEventListener('submit', (Event) => Event.preventDefault())
-
     bttnAdd.addEventListener('click', () => {
         let nome = document.getElementById('contactName').value
         let email = document.getElementById('emailContact').value
         let tel = document.getElementById('telContact').value
 
-        addContact(nome, email, tel)
-    })    
+        const validTel = validateInput(tel)
+        if(!validTel){
+            window.alert('Número de celular inválido')
+        }
+        else{
+            addContact(nome, email, tel) 
+        }
+
+    }) 
 }
+// Validando campos
+function validateInput(tel, email){
+    const regexTel = /^\([1-9]{2}\)\s9[0-9][0-9]{4}\-[0-9]{4}$/
+    return regexTel.test(tel)
+}
+
 function addContact(nome, email, tel){
     createRow(nome, email, tel)
     limparCampos()
-    
 }
 function createRow(nome, email, tel){
     const tbAdd = document.getElementById('tb-contact')
@@ -71,4 +82,4 @@ function limparCampos(){
     document.getElementById('telContact').value = ''
 }
 
-contactHandler(bttnAdd, form, idCount)
+contactHandler(bttnAdd, form)
