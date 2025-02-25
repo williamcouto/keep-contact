@@ -8,21 +8,31 @@ function contactHandler(bttnAdd, form){
         let nome = document.getElementById('contactName').value
         let email = document.getElementById('emailContact').value
         let tel = document.getElementById('telContact').value
-
         const validTel = validateInput(tel)
-        if(!validTel){
-            window.alert('Número de celular inválido')
-        }
-        else{
-            addContact(nome, email, tel) 
+
+        if(checkFields(nome, email, tel)){
+            window.alert('Todos os campos devem ser preenchidos!')
         }
 
-    }) 
+        if(!validTel){
+            window.alert('O número de celular é inválido')
+            return;
+        }
+
+        addContact(nome, email, tel) 
+    })   
 }
+
 // Validando campos
 function validateInput(tel, email){
     const regexTel = /^\([1-9]{2}\)\s9[0-9]{4}\-[0-9]{4}$/
     return regexTel.test(tel)
+}
+
+// Verificando se os campos estão vazios
+function checkFields(){
+    const fields = Array.from(arguments)
+    return fields.some(field => field === "")
 }
 
 function addContact(nome, email, tel){
@@ -70,9 +80,9 @@ function createRow(nome, email, tel){
 
 
     btnRemove.addEventListener('click', (Event) => {
-            const rowRemoved = Event.target.closest('tr')
-            rowRemoved.remove()
-        })
+        const rowRemoved = Event.target.closest('tr')
+        rowRemoved.remove()
+    })
 }
 
 //Limpando valores
@@ -81,5 +91,4 @@ function limparCampos(){
     document.getElementById('emailContact').value = ''
     document.getElementById('telContact').value = ''
 }
-
 contactHandler(bttnAdd, form)
