@@ -11,18 +11,18 @@ function contactHandler(bttnAdd, form){
         const validTel = validateInput(tel)
 
         if(checkFields(nome, email, tel)){
-            window.alert('Todos os campos devem ser preenchidos!')
+            //window.alert('Todos os campos devem ser preenchidos!')
+            cardNotifications()
+                return;
         }
 
         if(!validTel){
             window.alert('O número de celular é inválido')
-            return;
+                return;
         }
-
         addContact(nome, email, tel) 
     })   
 }
-
 // Validando campos
 function validateInput(tel, email){
     const regexTel = /^\([1-9]{2}\)\s9[0-9]{4}\-[0-9]{4}$/
@@ -35,10 +35,32 @@ function checkFields(){
     return fields.some(field => field === "")
 }
 
+//Criando cards de notificação
+function cardNotifications(){
+    let card = document.createElement('span')
+    let form = document.getElementById('formContact')
+
+    let textCardAlert = document.createTextNode('Todos os campos devem ser preenchidos!')
+    card.setAttribute('class', 'alert alert-danger')
+
+    
+    card.appendChild(textCardAlert)
+    form.appendChild(card)
+
+    // Criando botão de fechar aviso
+    let btnCloseCard = document.createElement('button')
+    btnCloseCard.classList.add('btn-close')
+    card.appendChild(btnCloseCard)
+    card.style.display = 'flex'
+    card.style.justifyContent = 'space-between'
+
+}
+
 function addContact(nome, email, tel){
     createRow(nome, email, tel)
     limparCampos()
 }
+
 function createRow(nome, email, tel){
     const tbAdd = document.getElementById('tb-contact')
     let newRow = document.createElement('tr')
@@ -84,11 +106,11 @@ function createRow(nome, email, tel){
         rowRemoved.remove()
     })
 }
-
 //Limpando valores
 function limparCampos(){
     document.getElementById('contactName').value = ''
     document.getElementById('emailContact').value = ''
     document.getElementById('telContact').value = ''
 }
+
 contactHandler(bttnAdd, form)
