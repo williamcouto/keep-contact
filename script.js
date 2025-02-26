@@ -8,25 +8,36 @@ function contactHandler(bttnAdd, form){
         let nome = document.getElementById('contactName').value
         let email = document.getElementById('emailContact').value
         let tel = document.getElementById('telContact').value
-        const validTel = validateInput(tel)
-
+        
         if(checkFields(nome, email, tel)){
             //window.alert('Todos os campos devem ser preenchidos!')
             cardNotifications()
                 return;
         }
+        const validTel = validateInput(tel)
+        const validEmail = validateInputEmail(email)
 
         if(!validTel){
             window.alert('O número de celular é inválido')
+                return;
+        }
+        if(!validEmail){
+            window.alert('O email inserido é inválido')
                 return;
         }
         addContact(nome, email, tel) 
     })   
 }
 // Validando campos
-function validateInput(tel, email){
+function validateInput(tel){
     const regexTel = /^\([1-9]{2}\)\s9[0-9]{4}\-[0-9]{4}$/
     return regexTel.test(tel)
+}
+
+//Validando campo de email
+function validateInputEmail(email){
+    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return regexEmail.test(email)
 }
 
 // Verificando se os campos estão vazios
