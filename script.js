@@ -1,6 +1,5 @@
 let bttnAdd = document.querySelector('.btn')
 let form = document.getElementById('formContact')
-let idCount = 1
 
 function contactHandler(bttnAdd, form){
     form.addEventListener('submit', (Event) => Event.preventDefault())
@@ -77,7 +76,7 @@ function createRow(nome, email, tel){
     const tbAdd = document.getElementById('tb-contact')
     let newRow = document.createElement('tr')
     let textElem = ''
-    let idCount = Date.now()
+    let idCount = Math.floor(Math.random() * 900) + 100
 
     let tdID = document.createElement('td')
     textElem = document.createTextNode(idCount)
