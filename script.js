@@ -10,8 +10,12 @@ function contactHandler(bttnAdd, form){
         
         if(checkFields(nome, email, tel)){  
             cardErrorNotification()
-                return;
-        }
+            return;
+        } else {
+            cardSuccessInsert()
+            setTimeout(removeCards, 1400)
+        } 
+        
         const validTel = validateInput(tel)
         const validEmail = validateInputEmail(email)
 
@@ -23,7 +27,7 @@ function contactHandler(bttnAdd, form){
             window.alert('O email inserido é inválido')
                 return;
         }
-        addContact(nome, email, tel) 
+        addContact(nome, email, tel)
     })   
 }
 // Validando campos
@@ -65,6 +69,24 @@ function cardErrorNotification(){
     btnCloseCard.addEventListener('click', () =>{
         card.remove()
     })
+}
+
+//Criando card de confirmação da criação do contato
+function cardSuccessInsert() {
+    let form = document.getElementById('formContact')
+    let card = document.createElement('span')
+    let textSuccess = document.createTextNode('O contato foi adicionado!')
+    card.setAttribute('class', 'alert alert-success')
+    
+    card.appendChild(textSuccess)
+    form.appendChild(card)
+}
+
+const removeCards = function(){
+    let cards = document.querySelectorAll('span')
+    cards.forEach(
+        card => card.remove()
+    )
 }
 
 function addContact(nome, email, tel){
