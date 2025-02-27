@@ -9,9 +9,8 @@ function contactHandler(bttnAdd, form){
         let email = document.getElementById('emailContact').value
         let tel = document.getElementById('telContact').value
         
-        if(checkFields(nome, email, tel)){
-            //window.alert('Todos os campos devem ser preenchidos!')
-            cardNotifications()
+        if(checkFields(nome, email, tel)){  
+            cardErrorNotification()
                 return;
         }
         const validTel = validateInput(tel)
@@ -47,24 +46,26 @@ function checkFields(){
 }
 
 //Criando cards de notificação
-function cardNotifications(){
+function cardErrorNotification(){
     let card = document.createElement('span')
     let form = document.getElementById('formContact')
-
     let textCardAlert = document.createTextNode('Todos os campos devem ser preenchidos!')
     card.setAttribute('class', 'alert alert-danger')
 
-    
     card.appendChild(textCardAlert)
     form.appendChild(card)
 
-    // Criando botão de fechar aviso
+    // Criando botão de fechar o card
     let btnCloseCard = document.createElement('button')
     btnCloseCard.classList.add('btn-close')
     card.appendChild(btnCloseCard)
     card.style.display = 'flex'
     card.style.justifyContent = 'space-between'
 
+    //Fecha o card quando clica no botão de fechar(X)
+    btnCloseCard.addEventListener('click', () =>{
+        card.remove()
+    })
 }
 
 function addContact(nome, email, tel){
@@ -111,7 +112,6 @@ function createRow(nome, email, tel){
     newRow.appendChild(tdRemove)
     tdRemove.appendChild(btnRemove)
 
-
     btnRemove.addEventListener('click', (Event) => {
         const rowRemoved = Event.target.closest('tr')
         rowRemoved.remove()
@@ -123,5 +123,4 @@ function limparCampos(){
     document.getElementById('emailContact').value = ''
     document.getElementById('telContact').value = ''
 }
-
 contactHandler(bttnAdd, form)
