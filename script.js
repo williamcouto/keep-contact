@@ -13,7 +13,7 @@ function contactHandler(bttnAdd, form){
             return;
         } else {
             cardSuccessInsert()
-            setTimeout(removeCards, 1400)
+            setTimeout(removeCards, 1200)
         } 
         
         const validTel = validateInput(tel)
@@ -50,6 +50,12 @@ function checkFields(){
 
 //Criando cards de notificação
 function cardErrorNotification(){
+    let cardError = document.querySelector('.alert-danger')
+    
+    //Remove a notificação e garante que apenas uma seja exibida por vez.
+    if(cardError){
+        cardError.remove()
+    }
     let card = document.createElement('span')
     let form = document.getElementById('formContact')
     let textCardAlert = document.createTextNode('Todos os campos devem ser preenchidos!')
@@ -144,4 +150,5 @@ function limparCampos(){
     document.getElementById('emailContact').value = ''
     document.getElementById('telContact').value = ''
 }
+
 contactHandler(bttnAdd, form)
