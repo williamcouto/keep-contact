@@ -11,11 +11,8 @@ function contactHandler(bttnAdd, form){
         if(checkFields(nome, email, tel)){  
             cardErrorNotification()
             return;
-        } else {
-            cardSuccessInsert()
-            setTimeout(removeCards, 1200)
         } 
-        
+    
         const validTel = validateInput(tel)
         const validEmail = validateInputEmail(email)
 
@@ -27,6 +24,8 @@ function contactHandler(bttnAdd, form){
             window.alert('O email inserido é inválido')
                 return;
         }
+        cardSuccessInsert()
+        setTimeout(removeCards, 1000)
         addContact(nome, email, tel)
     })   
 }
