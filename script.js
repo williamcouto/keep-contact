@@ -1,5 +1,6 @@
 let bttnAdd = document.querySelector('.btn')
 let form = document.getElementById('formContact')
+let contact = []
 
 function contactHandler(bttnAdd, form){
     form.addEventListener('submit', (Event) => Event.preventDefault())
@@ -95,6 +96,8 @@ const removeCards = function(){
 }
 
 function addContact(nome, email, tel){
+    contact.push({nome, email, tel})
+    saveContactStorage(contact)
     createRow(nome, email, tel)
     limparCampos()
 }
@@ -145,3 +148,7 @@ function limparCampos(){
 }
 
 contactHandler(bttnAdd, form)
+
+function saveContactStorage(){
+    localStorage.setItem('contact', JSON.stringify(contact))
+}
