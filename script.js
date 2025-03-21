@@ -103,12 +103,6 @@ function createRow(nome, email, tel){
     const tbAdd = document.getElementById('tb-contact')
     let newRow = document.createElement('tr')
     let textElem = ''
-    let idCount = Math.floor(Math.random() * 900) + 100
-
-    let tdID = document.createElement('td')
-    textElem = document.createTextNode(idCount)
-    tdID.appendChild(textElem)
-    newRow.appendChild(tdID)
 
     let tdName = document.createElement('td')
     textElem = document.createTextNode(nome)
