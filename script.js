@@ -150,6 +150,11 @@ function limparCampos(){
 contactHandler(bttnAdd, form)
 
 // localStorage
+document.addEventListener('DOMContentLoaded', () => {
+    contact = loadStorage()
+    updateTable()
+})
+
 function saveContactStorage(contact){
     localStorage.setItem('contact', JSON.stringify(contact))
 }
