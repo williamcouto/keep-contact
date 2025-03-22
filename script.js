@@ -157,4 +157,11 @@ function loadStorage() {
     let contact = localStorage.getItem('contact')
     return contact ? JSON.parse(contact) : []
 }
-
+function updateTable(){
+    let contact = loadStorage()
+    let tbodyStorage = document.querySelector('tbody')
+    tbodyStorage.innerHTML = ""
+    contact.forEach(contato => {
+        createRow(contato.nome, contato.email, contato.tel)
+    })
+}
