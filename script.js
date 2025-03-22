@@ -149,6 +149,12 @@ function limparCampos(){
 
 contactHandler(bttnAdd, form)
 
-function saveContactStorage(){
+// localStorage
+function saveContactStorage(contact){
     localStorage.setItem('contact', JSON.stringify(contact))
 }
+function loadStorage() {
+    let contact = localStorage.getItem('contact')
+    return contact ? JSON.parse(contact) : []
+}
+
