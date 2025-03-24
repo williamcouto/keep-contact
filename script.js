@@ -52,7 +52,7 @@ function checkFields(){
 function cardErrorNotification(){
     let cardError = document.querySelector('.alert-danger')
     
-    //Remove a notificação e garante que apenas uma seja exibida por vez.
+    //Garante que apenas uma seja exibida por vez.
     if(cardError){
         cardError.remove()
     }
@@ -138,6 +138,7 @@ function createRow(nome, email, tel){
     btnRemove.addEventListener('click', (Event) => {
         const rowRemoved = Event.target.closest('tr')
         rowRemoved.remove()
+        removeContato(nome,email,tel)
     })
 }
 //Limpando valores
@@ -169,4 +170,8 @@ function updateTable(){
     contact.forEach(contato => {
         createRow(contato.nome, contato.email, contato.tel)
     })
+}
+function removeContato(nome, email, tel){
+    contact = contact.filter(contato => !(contato.nome === nome && contato.email === email && contato.tel === tel))
+    saveContactStorage(contact)
 }
