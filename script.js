@@ -103,43 +103,75 @@ function addContact(nome, email, tel){
 }
 
 function createRow(nome, email, tel){
-    const tbAdd = document.getElementById('tb-contact')
-    let newRow = document.createElement('tr')
+    /**Inserindo cards */
+  
+    const cardSect = document.querySelector('.card-container')
     let textElem = ''
 
-    let tdName = document.createElement('td')
+    let cardUser = document.createElement('div')
+    cardUser.setAttribute('class', 'card')
+
+    let cardBody = document.createElement('div')
+    cardBody.setAttribute('class', 'card-body')
+
+    cardSect.appendChild(cardUser)//Insere 
+    cardSect.appendChild(cardBody)
+
+    cardUser.appendChild(cardBody)
+
+    //Criando labels do card
+    let nameLabel = document.createElement('h5')
+    nameLabel.setAttribute('class', 'card-title')
+
+
     textElem = document.createTextNode(nome)
-    tdName.appendChild(textElem)
-    newRow.appendChild(tdName)
-    tbAdd.appendChild(newRow)
+    nameLabel.appendChild(textElem)
+    cardBody.appendChild(nameLabel)
 
-    let tdEmail = document.createElement('td')
+    let emailLabel = document.createElement('p')
+    emailLabel.setAttribute('class', 'card-text')
+    
+
     textElem = document.createTextNode(email)
-    tdEmail.appendChild(textElem)
-    newRow.appendChild(tdEmail)
-    tbAdd.appendChild(newRow)
+    emailLabel.appendChild(textElem)
+    cardBody.appendChild(emailLabel)
+    // const tbAdd = document.getElementById('tb-contact')
+    // let newRow = document.createElement('tr')
+    // let textElem = ''
 
-    let tdCel = document.createElement('td')
-    textElem = document.createTextNode(tel)
-    tdCel.appendChild(textElem)
-    newRow.appendChild(tdCel)
-    tbAdd.appendChild(newRow)
+    // let tdName = document.createElement('td')
+    // textElem = document.createTextNode(nome)
+    // tdName.appendChild(textElem)
+    // newRow.appendChild(tdName)
+    // tbAdd.appendChild(newRow)
 
-    limparCampos()
+    // let tdEmail = document.createElement('td')
+    // textElem = document.createTextNode(email)
+    // tdEmail.appendChild(textElem)
+    // newRow.appendChild(tdEmail)
+    // tbAdd.appendChild(newRow)
 
-    // Criando botão de exclusão
-    let tdRemove = document.createElement('td')
-    let btnRemove = document.createElement('button')
-    btnRemove.classList.add('btn', 'btn-danger')
-    btnRemove.innerHTML = '<i class="bi bi-trash3-fill"></i>'
-    newRow.appendChild(tdRemove)
-    tdRemove.appendChild(btnRemove)
+    // let tdCel = document.createElement('td')
+    // textElem = document.createTextNode(tel)
+    // tdCel.appendChild(textElem)
+    // newRow.appendChild(tdCel)
+    // tbAdd.appendChild(newRow)
 
-    btnRemove.addEventListener('click', (Event) => {
-        const rowRemoved = Event.target.closest('tr')
-        rowRemoved.remove()
-        removeContato(nome,email,tel)
-    })
+    // limparCampos()
+
+    // // Criando botão de exclusão
+    // let tdRemove = document.createElement('td')
+    // let btnRemove = document.createElement('button')
+    // btnRemove.classList.add('btn', 'btn-danger')
+    // btnRemove.innerHTML = '<i class="bi bi-trash3-fill"></i>'
+    // newRow.appendChild(tdRemove)
+    // tdRemove.appendChild(btnRemove)
+
+    // btnRemove.addEventListener('click', (Event) => {
+    //     const rowRemoved = Event.target.closest('tr')
+    //     rowRemoved.remove()
+    //     removeContato(nome,email,tel)
+    // })
 }
 //Limpando valores
 function limparCampos(){

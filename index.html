@@ -13,37 +13,27 @@
     <header><h1 class="text-center mt-3">Keep Contact</h1></header>
     <section class="p-4">
             <form class="form_Agenda row g-2" id="formContact" method="post">
-                <div class="col-4">
+                <div class="col-md-4">
                     <label for="contactName" class="form-label">Nome</label>
                     <input type="text" class="form-control" name="contactName" id="contactName" >
                 </div>
 
-                <div class="col-4">
+                <div class="col-md-4">
                     <label for="emailContact" class="form-label">Email</label>
                     <input type="email" class="form-control" name="emailContact" id="emailContact">
                 </div>
             
-                <div class="col-4">
+                <div class="col-md-4">
                     <label for="telContact" class="form-label">Telefone</label>
                     <input type="tel"
                     class="form-control" name="telContact" id="telContact">
                 </div> 
                 <button class="btn btn-primary">Adicionar</button>
             </form>
-        <!--Tabela-->
-        <table class="table table-borderless">
-            <thead>
-                <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">E-mail</th>
-                    <th scope="col">Telefone</th>
-                    <th scope="col">Ações</th>
-                </tr>
-            </thead>
-            <tbody id="tb-contact" class="text-center">
-                <!--Os contatos são inseridos por meio do JS-->
-            </tbody>
-        </table>
+        <!--Cards-->
+        <section class="card-container">
+            
+        </section>
     </div>
     </section>
     <script src="script.js"></script>
