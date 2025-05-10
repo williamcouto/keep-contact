@@ -103,7 +103,7 @@ function addContact(nome, email, tel) {
 }
 
 function createRow(nome, email, tel) {
-    const cardSect = document.querySelector('.card-container')
+    const cardRow = document.querySelector('.row-cols-3')
     let textElem = ''
     let cardUser = document.createElement('div')
     cardUser.setAttribute('class', 'card')
@@ -111,9 +111,14 @@ function createRow(nome, email, tel) {
     let cardBody = document.createElement('div')
     cardBody.setAttribute('class', 'card-body')
 
-    cardSect.appendChild(cardUser)//Insere 
-    cardSect.appendChild(cardBody)
+    let cardCol = document.createElement('div')
+    cardCol.setAttribute('class', 'col')
+
+    cardRow.appendChild(cardUser)
+    cardRow.appendChild(cardBody)
     cardUser.appendChild(cardBody)
+    cardRow.appendChild(cardCol)
+    cardCol.appendChild(cardUser)
 
     //Criando labels do card
     let nameContactUser = document.createElement('h5')
